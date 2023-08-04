@@ -6,6 +6,8 @@ module com.example.calculadora {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
+    requires java.scripting;
+
     opens com.example.calculadora to javafx.fxml;
     exports com.example.calculadora;
 }

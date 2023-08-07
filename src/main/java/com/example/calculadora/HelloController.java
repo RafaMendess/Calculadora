@@ -179,7 +179,10 @@ public class HelloController implements Initializable {
     protected void fatorialOnClick(ActionEvent event) {
         String visor= visorLabel.getText();
         visorLabel.setText(visor+fatorial.getText());
+        int tamanho= visorLabel.getText().length();
+        expressao.replace(tamanho-2,tamanho-1,"");
         expressao.append(calculadora.calculateFatorialInExpression(visorLabel.getText()));
+        System.out.println(expressao.toString());
     }
 
     @FXML

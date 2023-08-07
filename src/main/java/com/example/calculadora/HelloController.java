@@ -2,10 +2,14 @@ package com.example.calculadora;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class HelloController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class HelloController implements Initializable {
     @FXML private Button botao0;
     @FXML private Button botao1;
     @FXML private Button botao2;
@@ -70,136 +74,208 @@ public class HelloController {
 
     @FXML
     private Label visorLabel;
+    private StringBuilder expressao;
+    private Calculos calculadora=new Calculos();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.expressao=new StringBuilder();
+    }
+
+
 
     @FXML
-    void botao0OnClick(ActionEvent event) {
+    protected void botao0OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao0.getText());
+        expressao.append(botao0.getText());
+    }
+
+    @FXML
+    protected  void botao1OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao1.getText());
+        expressao.append(botao1.getText());
 
     }
 
     @FXML
-    void botao1OnClick(ActionEvent event) {
+    protected  void botao2OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao2.getText());
+        expressao.append(botao2.getText());
 
     }
 
     @FXML
-    void botao2OnClick(ActionEvent event) {
+    protected void botao3OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao3.getText());
+        expressao.append(botao3.getText());
+    }
+
+    @FXML
+    protected void botao4OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao4.getText());
+        expressao.append(botao4.getText());
+
 
     }
 
     @FXML
-    void botao3OnClick(ActionEvent event) {
+    protected void botao5OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao5.getText());
+        expressao.append(botao5.getText());
+
 
     }
 
     @FXML
-    void botao4OnClick(ActionEvent event) {
+    protected void botao6OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao6.getText());
+        expressao.append(botao6.getText());
+
 
     }
 
     @FXML
-    void botao5OnClick(ActionEvent event) {
+    protected void botao7Onclick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao7.getText());
+        expressao.append(botao7.getText());
+
 
     }
 
     @FXML
-    void botao6OnClick(ActionEvent event) {
+    protected  void botao8Onclick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao8.getText());
+        expressao.append(botao8.getText());
+
 
     }
 
     @FXML
-    void botao7Onclick(ActionEvent event) {
+    protected void botao9Onclick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+botao9.getText());
+        expressao.append(botao9.getText());
+
 
     }
 
     @FXML
-    void botao8Onclick(ActionEvent event) {
+    protected  void divisaoOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+divisao.getText());
+        expressao.append(divisao.getText());
 
     }
 
     @FXML
-    void botao9Onclick(ActionEvent event) {
+    protected void fatorialOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+fatorial.getText());
+        expressao.append(calculadora.calculateFatorialInExpression(visorLabel.getText()));
+    }
+
+    @FXML
+    protected  void igualOnClick(ActionEvent event) {
+        visorLabel.setText(calculadora.resultado(expressao.toString()));
+        expressao.setLength(0);
+    }
+
+    @FXML
+    protected void limparOnClick(ActionEvent event) {
+        expressao.setLength(0);
+        visorLabel.setText("");
+    }
+
+    @FXML
+    protected void multiplicacaoOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+multiplicacao.getText());
+        expressao.append(calculadora.multiplicacao());
 
     }
 
     @FXML
-    void divisaoOnClick(ActionEvent event) {
+    protected void parenteses1OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+parenteses1.getText());
+        expressao.append( parenteses1.getText());
+    }
+
+    @FXML
+    protected  void parenteses2OnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+parenteses2.getText());
+        expressao.append( parenteses2.getText());
+    }
+
+    @FXML
+    protected  void piOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+pi.getText());
+        expressao.append(calculadora.pi());
 
     }
 
     @FXML
-    void fatorialOnClick(ActionEvent event) {
+    protected  void pontoOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+ponto.getText());
+        expressao.append( ponto.getText());
+    }
+
+    @FXML
+    protected void porcentagemOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+porcentagem.getText());
+        expressao.append(calculadora.porcentagem());
 
     }
 
     @FXML
-    void igualOnClick(ActionEvent event) {
+    protected void potenciaOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+potencia.getText()+"2");
+        int tamanho=visorLabel.getText().length();
+        expressao.replace(tamanho-4, tamanho-1, "");
+        expressao.append(calculadora.pow(String.valueOf(visorLabel.getText().charAt(tamanho-4))));
+        System.out.println(expressao.toString());
 
     }
 
     @FXML
-    void limparOnClick(ActionEvent event) {
+    protected void raizOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+raiz.getText());
+        int tamanho=visorLabel.getText().length();
+        expressao.replace(tamanho-2, tamanho-1, "");
+        expressao.append(calculadora.sqrt(String.valueOf(visorLabel.getText().charAt(tamanho-2))));
+        System.out.println(expressao.toString());
 
     }
 
     @FXML
-    void multiplicacaoOnClick(ActionEvent event) {
-
+    protected void somaOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+soma.getText());
+        expressao.append(soma.getText());
     }
 
     @FXML
-    void parenteses1OnClick(ActionEvent event) {
+    protected void subtracaoOnClick(ActionEvent event) {
+        String visor= visorLabel.getText();
+        visorLabel.setText(visor+subtracao.getText());
+        expressao.append(subtracao.getText());
 
     }
 
-    @FXML
-    void parenteses2OnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void piOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void pontoOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void porcentagemOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void potenciaOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void raizOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void somaOnClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void subtracaoOnClick(ActionEvent event) {
-
-    }
 
 }
 
-//    ScriptEngineManager manager= new ScriptEngineManager();
-//          ScriptEngine engine= manager.getEngineByName("javascript");
-//
-//
-//          try {
-//          Object o= engine.eval("2*(4-2)");
-//          welcomeText.setText("Result = "+ o);
-//          } catch (ScriptException e) {
-//          throw new RuntimeException(e);
-//          }
